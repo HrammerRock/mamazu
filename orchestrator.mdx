@@ -1,0 +1,33 @@
+---
+title: "cdm-orchestrator"
+description: "Единая точка входа: состояние конвейера, Review Gate, команды управления."
+---
+
+Оркестратор читает `$TASK_DIR/work_docs/steps/step-*.yaml`, определяет текущий шаг и вызывает дочерние скилы.
+
+## Переходы между шагами
+
+| Последний успешный шаг | Дальше |
+| --- | --- |
+| нет | cdm-intake |
+| cdm-intake | cdm-extract |
+| cdm-extract | Review Gate |
+| Review Gate (`gate: confirmed`) | cdm-synthesize |
+| cdm-synthesize | cdm-qa |
+| cdm-qa (`violations=0`) | cdm-save |
+| cdm-save | конвейер завершён |
+
+## Команды
+
+| Команда | Действие |
+| --- | --- |
+| `статус` | Таблица шагов по `step-*.yaml` |
+| `подтвердить` | Записать `step-02-gate.yaml`, перейти к synthesize |
+| `переделать шаг N` | Удалить step N и последующие, перезапустить шаг N |
+| `очистить` | Удалить только `work_docs/tmp/` |
+
+## Review Gate
+
+После **cdm-extract** оркестратор выводит `draft_entities.csv` и `draft_relations.csv`, спрашивает подтверждение. Строки с пустым `source_file` помечаются ⚠️.
+
+Подробнее: [Review Gate](/review-gate).

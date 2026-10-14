@@ -1,0 +1,22 @@
+---
+title: "cdm-qa"
+description: "Шаг 4: консистентность четырёх артефактов (P1–P6)."
+---
+
+Валидатор сравнивает `entities.csv`, `relations.csv`, `model.mmd`, `model.md`.
+
+| Код | Проверка |
+| --- | --- |
+| P1 | Каждая сущность из CSV есть в Mermaid (с учётом транслитерации) |
+| P2 | `entity_from` / `entity_to` ссылаются на entities |
+| P3 | Каждое отношение из CSV отражено в Mermaid |
+| P4 | В `model.md` есть `###` для каждой сущности |
+| P5 | Синтаксис Mermaid (`erDiagram`, без кириллицы в именах сущностей) |
+| P6 | Обязательные поля CSV не пустые |
+
+```yaml
+status: success
+violations: []
+```
+
+**При success:** [cdm-save](/save).
