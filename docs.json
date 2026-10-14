@@ -26,6 +26,7 @@
           "intake",
           "extract",
           "review-gate",
+          "synthesize",
           "qa",
           "save"
         ]
