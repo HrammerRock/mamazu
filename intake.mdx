@@ -1,0 +1,28 @@
+---
+title: "cdm-intake"
+description: "Шаг 1: приём источников, оценка детальности, source_index.md."
+---
+
+**Вход:** `$TASK_DIR`, опционально `$SOURCE_FILES` (файлы или папка).
+
+**Выход:** `work_docs/source_index.md`, `work_docs/steps/step-01-intake.yaml`.
+
+## Оценка приоритета
+
+Score по признакам в файле (см. `references/detail_scoring.md` в репозитории скилов):
+
+| Приоритет | Score |
+| --- | --- |
+| high | ≥ 10 |
+| medium | 4–9 |
+| low | &lt; 4 |
+
+Типы файлов: ТЗ, Lineage/ERD, DDL, словарь, текст, прочее.
+
+## Идемпотентность
+
+Если `source_index.md` уже есть — статус `already_exists`; пересоздание только после явного «да».
+
+<Info>
+  Нужен хотя бы один источник с priority **high** или **medium** для следующего шага extract.
+</Info>

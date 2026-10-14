@@ -1,0 +1,23 @@
+---
+title: "Review Gate"
+description: "Ручное подтверждение черновых реестров перед синтезом модели."
+---
+
+Review Gate выполняет **cdm-orchestrator** после успешного **cdm-extract**, до **cdm-synthesize**.
+
+<Steps>
+  <Step title="Показать черновики">
+    Таблицы `draft_entities.csv` и `draft_relations.csv` в чате; счётчики сущностей и отношений.
+  </Step>
+  <Step title="Подтвердить или править">
+    Ответ «подтвердить» → `work_docs/steps/step-02-gate.yaml` с `gate: confirmed`.  
+    «Скорректировать» → правки в CSV или в свободной форме, затем снова показ.
+  </Step>
+  <Step title="Синтез">
+    Только при `gate: confirmed` запускается [cdm-synthesize](/synthesize).
+  </Step>
+</Steps>
+
+<Warning>
+  Без подтверждённого gate synthesize возвращает `blocked`.
+</Warning>

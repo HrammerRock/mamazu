@@ -1,0 +1,26 @@
+---
+title: "cdm-extract"
+description: "Шаг 2: извлечение бизнес-сущностей и отношений в черновые CSV."
+---
+
+Чтение источников в порядке **high → medium → low**. Концептуальный уровень: бизнес-объекты, не технические `TMP_` / `LOAD_` таблицы.
+
+## Черновики
+
+| Файл | Колонки |
+| --- | --- |
+| `draft_entities.csv` | `name;description;key_attributes;domain;source_file` |
+| `draft_relations.csv` | `entity_from;entity_to;cardinality;description;source_file` |
+
+Разделитель `;`, UTF-8 BOM.
+
+## Cardinality
+
+`1:1`, `1:N`, `N:1`, `M:N`, или `unknown` (→ `open_questions`).
+
+## Конфликты (R28)
+
+- Разный приоритет файлов → побеждает более высокий.
+- Один уровень приоритета → `conflict`, решение только с аналитиком.
+
+**Выход:** `step-02-extract.yaml` → [Review Gate](/review-gate).

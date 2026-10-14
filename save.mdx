@@ -1,0 +1,15 @@
+---
+title: "cdm-save"
+description: "Шаг 5: копирование четырёх артефактов в папку назначения."
+---
+
+**Prerequisites:** `step-04-qa.yaml` — `status: success`, `violations: []`.
+
+<Steps>
+  <Step title="Проверка QA">Все четыре файла в `work_docs/`, QA без нарушений.</Step>
+  <Step title="Папка в R03">Путь внутри корня R03.</Step>
+  <Step title="Перезапись">Подтверждение при существующих файлах (R23).</Step>
+  <Step title="Копирование">`entities.csv`, `relations.csv`, `model.md`, `model.mmd` → `$TARGET_DIR`.</Step>
+</Steps>
+
+После save конвейер завершён.

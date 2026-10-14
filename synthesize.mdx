@@ -1,0 +1,21 @@
+---
+title: "cdm-synthesize"
+description: "Шаг 3: генерация entities.csv, relations.csv, model.md, model.mmd."
+---
+
+**Prerequisites:** `step-02-gate.yaml` с `gate: confirmed`, не менее двух сущностей в черновиках.
+
+## Артефакты
+
+| Файл | Назначение |
+| --- | --- |
+| `entities.csv` | Нормализованный реестр объектов |
+| `relations.csv` | Реестр отношений |
+| `model.mmd` | erDiagram (латиница в именах сущностей) |
+| `model.md` | Описание + встроенная Mermaid-схема |
+
+## Mermaid cardinality
+
+Соответствие поля `cardinality` в CSV и линий в erDiagram — см. `references/mermaid_rules.md` (1:1, 1:N, N:1, M:N).
+
+**Далее:** [cdm-qa](/qa).
